@@ -1,0 +1,20 @@
+#include "test_local.h"
+#include <wbcrypto/wbsm4_se_la.h>
+#include <wbcrypto/utils.h>
+int main()
+{
+    wbcrypto_wbsm4se_la_context ctx;
+    unsigned char key[16] = {
+             0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef,
+             0xfe, 0xdc, 0xba, 0x98, 0x76, 0x54, 0x32, 0x10
+    };
+    unsigned char input[16] = {
+             0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef,
+             0xfe, 0xdc, 0xba, 0x98, 0x76, 0x54, 0x32, 0x10
+    };
+    unsigned char output[16]={0};
+    wbcrypto_wbsm4_se_la_gen(&ctx, key);
+
+    wbcrypto_wbsm4_se_la_encrypt(input,output,&ctx);
+    dump_hex(output,16);
+}

@@ -1,0 +1,1 @@
+cd .. && make clean && make -j32 && cd test &&./fpe_tst 
